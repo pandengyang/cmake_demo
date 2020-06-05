@@ -1,0 +1,17 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
+
+PROJECT(cmake_demo)
+
+SET(CMAKE_C_COMPILER /usr/local/arm_linux_4.8/bin/arm-linux-gcc)
+SET(CMAKE_CXX_COMPILER /usr/local/arm_linux_4.8/bin/arm-linux-g++)
+
+INCLUDE_DIRECTORIES(./include)
+
+AUX_SOURCE_DIRECTORY(. MAIN_SRCS)
+ADD_SUBDIRECTORY(eat)
+ADD_SUBDIRECTORY(hello)
+
+ADD_EXECUTABLE(demo ${MAIN_SRCS})
+
+TARGET_LINK_LIBRARIES(demo eat_lib)
+TARGET_LINK_LIBRARIES(demo hello_lib)
